@@ -61,11 +61,11 @@ message() {
 
 # ensure a path ends in /
 fixPath() {
-  local path=$1
+  local _path=$1
 
-  local dirlen=${#path}
-  local lastchar=${path:dirlen-1:1}
-  [[ $lastchar != "/" ]] && path="${path}/";
+  local dirlen=${#_path}
+  local lastchar=${_path:${dirlen}-1:1}
+  [[ $lastchar != "/" ]] && path="${_path}/";
 
   echo $path
 }
@@ -82,7 +82,6 @@ BENCH_START=$(date -u +'%Y-%m-%d %H:%M:%S')
 HOST=""
 URL=""
 BENCH="TPCH"
-INTERACTIVE=0
 SCALE=1
 SET="good"
 SETSTYLE="words"
@@ -194,9 +193,9 @@ if [[ "$HOST" == "" && "$URL" == "" ]]; then
   usage
   exit 1
 elif [[ "$HOST" != "" ]]; then
-  HOSTORURL="-h $HOST" 
+  HOSTORURL=-h $HOST
 else
-  HOSTORURL="-U ${URL}" 
+  HOSTORURL=-U ${URL}
 fi
 debug host-or-url is ${HOSTORURL}
 
@@ -380,13 +379,13 @@ runQuery() {
    local outfile=${LOGDIR}/${1//sql/out}
 
    EXEC_START_DATE[$bench]="$(date -u '+%Y-%m-%d %H:%M:%S')"
-   local status=0
+   local _status=0
 
    # too verbose, so got rid of this
    #message running $queryfile
    if [[ $TIMEOUT -eq 0 ]]; then
       $SQLSHELL -q ${HOSTORURL} -f $queryfile -o $outfile 
-      status=$?
+      _status=$?
    else
       $SQLSHELL -q ${HOSTORURL} -f $queryfile -o $outfile &
       debug backgrounded shell
@@ -414,13 +413,13 @@ runQuery() {
          for id in $jobs; do
            killJob $id
          done
-         status=1
+         _status=1
       fi
    fi
 
-   EXEC_STATUS[$bench]=$status
+   EXEC_STATUS[$bench]=$_status
 
-   return $status
+   return $_status
 }
 
 # only works on a 'one count' query outputfile
@@ -951,13 +950,13 @@ checkBenchResults() {
     for bench in ${!EXEC_START_DATE[@]}; do
         local date=${EXEC_START_DATE[$bench]}
         local elapsed=${EXEC_TIME[$bench]}
-        local status="PASS"
+        local _status="PASS"
         local errorCode=${EXEC_STATUS[$bench]}
         if [[ $errorCode != 0 ]]; then
-            status="FAIL"
+            _status="FAIL"
             BENCH_PASS="FAIL"
         fi
-	    echo "$date|$bench|$iter|$status|$errorCode||$elapsed" >> ${LOGBASE}logs/test_run.csv
+	    echo "$date|$bench|$iter|${_status}|$errorCode||$elapsed" >> ${LOGBASE}logs/test_run.csv
     done
 }
 

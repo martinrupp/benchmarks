@@ -18,7 +18,7 @@ create external table customer_address
     ca_gmt_offset             decimal(5,2)                  ,
     ca_location_type          char(20)                      --,
     --primary key (ca_address_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/customer_address';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CUSTOMER_ADDRESS';
 
 create external table customer_demographics
 (
@@ -32,7 +32,7 @@ create external table customer_demographics
     cd_dep_employed_count     integer                       ,
     cd_dep_college_count      integer                       --,
     --primary key (cd_demo_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/customer_demographics';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CUSTOMER_DEMOGRAPHICS';
 
 create external table date_dim
 (
@@ -65,7 +65,7 @@ create external table date_dim
     d_current_quarter         char(1)                       ,
     d_current_year            char(1)                       --,
     --primary key (d_date_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/date_dim';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/DATE_DIM';
 
 create external table warehouse
 (
@@ -84,7 +84,7 @@ create external table warehouse
     w_country                 varchar(20)                   ,
     w_gmt_offset              decimal(5,2)                  --,
     --primary key (w_warehouse_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/warehouse';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/WAREHOUSE';
 
 create external table ship_mode
 (
@@ -95,7 +95,7 @@ create external table ship_mode
     sm_carrier                char(20)                      ,
     sm_contract               char(20)                      --,
     --primary key (sm_ship_mode_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/ship_mode';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/SHIP_MODE';
 
 create external table time_dim
 (
@@ -110,7 +110,7 @@ create external table time_dim
     t_sub_shift               char(20)                      ,
     t_meal_time               char(20)                      --,
     --primary key (t_time_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/time_dim';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/TIME_DIM';
 
 create external table reason
 (
@@ -118,7 +118,7 @@ create external table reason
     r_reason_id               char(16)              not null,
     r_reason_desc             char(100)                     --,
     --primary key (r_reason_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/reason';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/REASON';
 
 create external table income_band
 (
@@ -126,7 +126,7 @@ create external table income_band
     ib_lower_bound            integer                       ,
     ib_upper_bound            integer                       --,
     --primary key (ib_income_band_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/income_band';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/INCOME_BAND';
 
 create external table item
 (
@@ -153,7 +153,7 @@ create external table item
     i_manager_id              integer                       ,
     i_product_name            char(50)                      --,
     --primary key (i_item_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/item';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/ITEM';
 
 create external table store
 (
@@ -187,7 +187,7 @@ create external table store
     s_gmt_offset              decimal(5,2)                  ,
     s_tax_precentage          decimal(5,2)                  --,
     --primary key (s_store_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/store';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/STORE';
 
 create external table call_center
 (
@@ -223,7 +223,7 @@ create external table call_center
     cc_gmt_offset             decimal(5,2)                  ,
     cc_tax_percentage         decimal(5,2)                  --,
     --primary key (cc_call_center_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/call_center';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CALL_CENTER';
 
 create external table customer
 (
@@ -246,7 +246,7 @@ create external table customer
     c_email_address           char(50)                      ,
     c_last_review_date        char(10)                      --,
     --primary key (c_customer_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/customer';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CUSTOMER';
 
 create external table web_site
 (
@@ -277,7 +277,7 @@ create external table web_site
     web_gmt_offset            decimal(5,2)                  ,
     web_tax_percentage        decimal(5,2)                  --,
     --primary key (web_site_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/web_site';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/WEB_SITE';
 
 create external table store_returns
 (
@@ -302,7 +302,7 @@ create external table store_returns
     sr_store_credit           decimal(7,2)                  ,
     sr_net_loss               decimal(7,2)                  --,
     --primary key (sr_item_sk, sr_ticket_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/store_returns';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/STORE_RETURNS';
 
 create external table household_demographics
 (
@@ -312,7 +312,7 @@ create external table household_demographics
     hd_dep_count              integer                       ,
     hd_vehicle_count          integer                       --,
     --primary key (hd_demo_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/household_demographics';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/HOUSEHOLD_DEMOGRAPHICS';
 
 create external table web_page
 (
@@ -331,7 +331,7 @@ create external table web_page
     wp_image_count            integer                       ,
     wp_max_ad_count           integer                       --,
     --primary key (wp_web_page_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/web_page';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/WEB_PAGE';
 
 create external table promotion
 (
@@ -355,7 +355,7 @@ create external table promotion
     p_purpose                 char(15)                      ,
     p_discount_active         char(1)                       --,
     --primary key (p_promo_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/promotion';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/PROMOTION';
 
 create external table catalog_page
 (
@@ -369,7 +369,7 @@ create external table catalog_page
     cp_description            varchar(100)                  ,
     cp_type                   varchar(100)                  --,
     --primary key (cp_catalog_page_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/catalog_page';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CATALOG_PAGE';
 
 create external table inventory
 (
@@ -378,7 +378,7 @@ create external table inventory
     inv_warehouse_sk          integer               not null,
     inv_quantity_on_hand      integer                       --,
     --primary key (inv_date_sk, inv_item_sk, inv_warehouse_sk)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/inventory';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/INVENTORY';
 
 create external table catalog_returns
 (
@@ -410,7 +410,7 @@ create external table catalog_returns
     cr_store_credit           decimal(7,2)                  ,
     cr_net_loss               decimal(7,2)                  --,
     --primary key (cr_item_sk, cr_order_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/catalog_returns';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CATALOG_RETURNS';
 
 create external table web_returns
 (
@@ -439,7 +439,7 @@ create external table web_returns
     wr_account_credit         decimal(7,2)                  ,
     wr_net_loss               decimal(7,2)                  --,
     --primary key (wr_item_sk, wr_order_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/web_returns';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/WEB_RETURNS';
 
 create external table web_sales
 (
@@ -478,7 +478,7 @@ create external table web_sales
     ws_net_paid_inc_ship_tax  decimal(7,2)                  ,
     ws_net_profit             decimal(7,2)                  --,
     --primary key (ws_item_sk, ws_order_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/web_sales';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/WEB_SALES';
 
 create external table catalog_sales
 (
@@ -517,7 +517,7 @@ create external table catalog_sales
     cs_net_paid_inc_ship_tax  decimal(7,2)                  ,
     cs_net_profit             decimal(7,2)                  --,
     --primary key (cs_item_sk, cs_order_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/catalog_sales';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/CATALOG_SALES';
 
 create external table store_sales
 (
@@ -545,5 +545,5 @@ create external table store_sales
     ss_net_paid_inc_tax       decimal(7,2)                  ,
     ss_net_profit             decimal(7,2)                  --,
     --primary key (ss_item_sk, ss_ticket_number)
-) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/store_sales';
+) STORED AS ##MODE## LOCATION '##DSRC##/TPCDS/##SCALE##/##MODE##/STORE_SALES';
 

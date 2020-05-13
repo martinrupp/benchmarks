@@ -223,8 +223,7 @@ create external table call_center
     cc_gmt_offset             decimal(5,2)                  ,
     cc_tax_percentage         decimal(5,2)                  --,
     --primary key (cc_call_center_sk)
-) PARTITIONED BY (cc_call_center_sk)
-STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/call_center';
+) STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/call_center';
 
 create external table customer
 (
@@ -247,8 +246,7 @@ create external table customer
     c_email_address           char(50)                      ,
     c_last_review_date        char(10)                      --,
     --primary key (c_customer_sk)
-) PARTITIONED BY (c_customer_sk)
-STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/customer';
+) STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/customer';
 
 create external table web_site
 (
@@ -292,7 +290,7 @@ create external table store_returns
     sr_addr_sk                integer                       ,
     sr_store_sk               integer                       ,
     sr_reason_sk              integer                       ,
-    sr_ticket_number          integer               not null,
+    sr_ticket_number          bigint                not null,
     sr_return_quantity        integer                       ,
     sr_return_amt             decimal(7,2)                  ,
     sr_return_tax             decimal(7,2)                  ,
@@ -382,7 +380,7 @@ create external table inventory
     inv_quantity_on_hand      integer                       --,
     --primary key (inv_date_sk, inv_item_sk, inv_warehouse_sk)
 ) PARTITIONED BY (inv_date_sk)
-) STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/inventory';
+STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/inventory';
 
 create external table catalog_returns
 (
@@ -402,7 +400,7 @@ create external table catalog_returns
     cr_ship_mode_sk           integer                       ,
     cr_warehouse_sk           integer                       ,
     cr_reason_sk              integer                       ,
-    cr_order_number           integer               not null,
+    cr_order_number           bigint                not null,
     cr_return_quantity        integer                       ,
     cr_return_amount          decimal(7,2)                  ,
     cr_return_tax             decimal(7,2)                  ,
@@ -415,7 +413,7 @@ create external table catalog_returns
     cr_net_loss               decimal(7,2)                  --,
     --primary key (cr_item_sk, cr_order_number)
 ) PARTITIONED BY (cr_returned_date_sk)
-STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/CATALOG_RETURNS';
+STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/catalog_returns';
 
 create external table web_returns
 (
@@ -432,7 +430,7 @@ create external table web_returns
     wr_returning_addr_sk      integer                       ,
     wr_web_page_sk            integer                       ,
     wr_reason_sk              integer                       ,
-    wr_order_number           integer               not null,
+    wr_order_number           bigint                not null,
     wr_return_quantity        integer                       ,
     wr_return_amt             decimal(7,2)                  ,
     wr_return_tax             decimal(7,2)                  ,
@@ -485,7 +483,7 @@ create external table web_sales
     ws_net_profit             decimal(7,2)                  --,
     --primary key (ws_item_sk, ws_order_number)
 ) PARTITIONED BY (ws_sold_date_sk)
-) STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/WEB_SALES';
+STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/WEB_SALES';
 
 create external table catalog_sales
 (
@@ -506,7 +504,7 @@ create external table catalog_sales
     cs_warehouse_sk           integer                       ,
     cs_item_sk                integer               not null,
     cs_promo_sk               integer                       ,
-    cs_order_number           integer               not null,
+    cs_order_number           bigint                not null,
     cs_quantity               integer                       ,
     cs_wholesale_cost         decimal(7,2)                  ,
     cs_list_price             decimal(7,2)                  ,
@@ -538,7 +536,7 @@ create external table store_sales
     ss_addr_sk                integer                       ,
     ss_store_sk               integer                       ,
     ss_promo_sk               integer                       ,
-    ss_ticket_number          integer               not null,
+    ss_ticket_number          bigint                not null,
     ss_quantity               integer                       ,
     ss_wholesale_cost         decimal(7,2)                  ,
     ss_list_price             decimal(7,2)                  ,

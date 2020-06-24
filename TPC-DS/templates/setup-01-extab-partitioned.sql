@@ -464,7 +464,7 @@ create external table web_sales
     ws_ship_mode_sk           integer                       ,
     ws_warehouse_sk           integer                       ,
     ws_promo_sk               integer                       ,
-    ws_order_number           integer               not null,
+    ws_order_number           bigint               not null,
     ws_quantity               integer                       ,
     ws_wholesale_cost         decimal(7,2)                  ,
     ws_list_price             decimal(7,2)                  ,
@@ -483,7 +483,7 @@ create external table web_sales
     ws_net_profit             decimal(7,2)                  --,
     --primary key (ws_item_sk, ws_order_number)
 ) PARTITIONED BY (ws_sold_date_sk)
-STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/WEB_SALES';
+STORED AS PARQUET LOCATION '/tmp/performance-datasets/tpcds/sf1-parquet/useDecimal=true,useDate=true,filterNull=false/web_sales';
 
 create external table catalog_sales
 (

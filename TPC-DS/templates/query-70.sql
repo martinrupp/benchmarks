@@ -1,8 +1,6 @@
 SET SCHEMA ##SCHEMA##;
 elapsedtime on;
 -- TPC-DS QUERY 70
--- replaced the alias lochierarchy with actual expression in the order by
--- change this back to original once we fix this issue
 ##EXPLAIN##
 select top 100 
     sum(ss_net_profit) as total_sum
@@ -35,9 +33,7 @@ select top 100
              )
  group by rollup(s_state,s_county)
  order by
-   grouping(s_state)+grouping(s_county) desc
-  ,case when grouping(s_state)+grouping(s_county) = 0 then s_state end
+   lochierarchy desc
+  ,case when lochierarchy = 0 then s_state end
   ,rank_within_parent
  ;
-
-
